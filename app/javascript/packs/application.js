@@ -19,3 +19,8 @@ require("channels")
 import "controllers"
 // import '../stylesheets/application'
 require("css/application.scss")
+
+require('css/application.scss')
+require("trix")
+require("@rails/actiontext")
+import "../trix-editor-overrides"
