@@ -23,3 +23,9 @@
 <br>
 
 <%= link_to 'New Import', new_import_path %>
+
+<a href="#"
+  data-reflex="click->ExampleReflex#increment"
+  data-step="1" 
+  data-count="<%= @count.to_i %>"
+>Increment <%= @count.to_i %></a>
