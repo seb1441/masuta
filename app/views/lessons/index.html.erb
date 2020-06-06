@@ -1,35 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="container mx-auto px-4">
+  <h1 class="text-5xl">Lessons</h1>
 
-<h1>Lessons</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Level</th>
-      <th>Chapter</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @lessons.each do |lesson| %>
+  <table class="table-auto">
+    <thead>
       <tr>
-        <td><%= lesson.title %></td>
-        <td><%#= lesson.description %></td>
-        <td><%= lesson.category_id %></td>
-        <td><%= lesson.level_id %></td>
-        <td><%= lesson.chapter_id %></td>
-        <td><%= link_to 'Show', lesson %></td>
-        <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
-        <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th class="px-4 py-2">Title</th>
+        <th>Category</th>
+        <th>Level</th>
+        <th>Chapter</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @lessons.each do |lesson| %>
+        <tr class="hover:bg-indigo-400">
+          <td class="border px-4 py-2 hover:text-white">
+            <%= link_to lesson do %>
+              <div style="height:100%;width:100%"><%= lesson.title %></div>
+            <% end %>
+          <td class="border px-4 py-2"><%= lesson.category.title %></td>
+          <td class="border px-4 py-2"><%= lesson.level.title %></td>
+          <td class="border px-4 py-2"><%= lesson.chapter.title %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Lesson', new_lesson_path %>
+  <br>
+
+  <%= link_to 'New Lesson', new_lesson_path %>
+
+</div>

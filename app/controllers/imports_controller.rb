@@ -1,4 +1,5 @@
 class ImportsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_import, only: [:show, :edit, :update, :destroy]
 
   # GET /imports

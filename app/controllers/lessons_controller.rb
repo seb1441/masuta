@@ -1,10 +1,12 @@
 class LessonsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin_area, only: [:show, :edit, :index]
 
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.all
+    @lessons = Lesson.all.includes(:category, :chapter, :level)
   end
 
   # GET /lessons/1
@@ -65,6 +67,10 @@ class LessonsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_lesson
       @lesson = Lesson.find(params[:id])
+    end
+
+    def set_admin_area
+      @admin_area = true
     end
 
     # Only allow a list of trusted parameters through.

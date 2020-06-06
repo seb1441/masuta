@@ -1,4 +1,5 @@
 class LevelsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_level, only: [:show, :edit, :update, :destroy]
 
   # GET /levels
