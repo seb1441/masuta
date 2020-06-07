@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+   background-color: yellow;
+ }
+
+@font-face {
+   font-family: 'Gang of Three';
+   src: asset-url('go3v2.ttf') format('truetype'),
+}
+
+.got-font {
+  font-family: 'Gang of Three';
+}

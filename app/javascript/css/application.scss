@@ -2,13 +2,3 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import './trix.scss';
-
-
-@font-face {
-   font-family: 'Gang of Three';
-   src: url('/assets/go3v2.ttf')
-}
-
-.got-font {
-  font-family: 'Gang of Three';
-}
