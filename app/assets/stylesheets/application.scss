@@ -16,9 +16,13 @@
 
 @font-face {
    font-family: 'Gang of Three';
-   src: asset-url('go3v2.ttf') format('truetype'),
+   src: asset-url('go3v2.ttf') format('truetype')
+}
+@font-face {
+   font-family: 'Yellow Rabbit';
+   src: asset-url('yellow-rabbit.otf') format('truetype')
 }
 
 .got-font {
-  font-family: 'Gang of Three';
+  font-family: 'Yellow Rabbit';
 }
