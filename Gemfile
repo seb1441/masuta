@@ -56,3 +56,4 @@ gem "devise", "~> 4.7"
 gem "aws-sdk-s3", require: false
 gem 'redis', '~> 4.1', '>= 4.1.4'
 gem 'hiredis', '~> 0.6.3'
+gem "view_component", "~> 2.7"

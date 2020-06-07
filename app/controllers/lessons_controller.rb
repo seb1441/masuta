@@ -69,10 +69,6 @@ class LessonsController < ApplicationController
       @lesson = Lesson.find(params[:id])
     end
 
-    def set_admin_area
-      @admin_area = true
-    end
-
     # Only allow a list of trusted parameters through.
     def lesson_params
       params.require(:lesson).permit(:title, :description, :category_id, :level_id, :chapter_id, :content)
