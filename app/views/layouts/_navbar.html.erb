@@ -1,7 +1,7 @@
 <nav class="bg-indigo-<%= @admin_area ? '600' : '300' %> sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
   <div class="flex items-center justify-between px-4 py-3 sm:p-0">
     <%# <div class="text-6xl mr-4 border-solid border h-19"><h1 class="-mt-4 -mb-2 text-white">主</h1></div> %>
-    <span class="font-semibold text-5xl tracking-tight got-font tracking-wide text-white">Masuta</span>
+    <%= link_to "Masuta", pages_home_path, class: "font-semibold text-5xl tracking-tight got-font tracking-wide text-white select-none" %>
   </div>
   <%# block/hidden %>
   <nav class="block px-2 pt-2 pb-4 sm:flex sm:p-0">
