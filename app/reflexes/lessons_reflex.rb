@@ -20,4 +20,27 @@ class LessonsReflex < ApplicationReflex
   #   end
   #
   # Learn more at: https://docs.stimulusreflex.com
+  # def filter
+  #   @lessons = []
+  #   @count = []
+  # end
+  def search
+    # session[:query] = element[:value].strip
+    table = element.dataset["table"]
+    name = element.dataset["name"]
+    if table.present?
+      session["#{table}___#{name}".to_sym] = element[:value].strip
+    else
+      session[name.to_sym] = element[:value].strip
+    end
+  end
+
+  def order
+    session[:order_by] = element.dataset["column-name"]
+    session[:direction] = element.dataset["direction"]
+  end
+
+  def paginate
+    session[:page] = element.dataset[:page].to_i
+  end
 end

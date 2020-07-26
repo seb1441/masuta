@@ -1,30 +1,59 @@
 <div class="container mx-auto px-4">
   <h1 class="text-5xl">Lessons</h1>
 
-  <table class="table-auto">
-    <thead>
-      <tr>
-        <th class="px-4 py-2">Title</th>
-        <th>Category</th>
-        <th>Level</th>
-        <th>Chapter</th>
-      </tr>
-    </thead>
+  <div class="flex flex-wrap -mx-3 mb-2">
+    <% @columns.find_all(&:filterable).each do |column| %>
+      <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+          <%= label_tag column[:name], (column[:title] || column[:name]), class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+        <% if column.choices %>
+          <%= select_tag column[:name], options_for_select(column[:choices]), include_blank: true, data: { reflex: "input->LessonsReflex#search", table: column.table, name: column.name, "reflex-root": "#search-results"}, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+        <% else %>
+          <%= text_field_tag column[:name], session[column.name], data: { reflex: "input->LessonsReflex#search", table: column.table, name: column.name, "reflex-root": "#search-results"}, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
-    <tbody>
-      <% @lessons.each do |lesson| %>
-        <tr class="hover:bg-indigo-400">
-          <td class="border px-4 py-2 hover:text-white">
-            <%= link_to lesson do %>
-              <div style="height:100%;width:100%"><%= lesson.title %></div>
-            <% end %>
-          <td class="border px-4 py-2"><%= lesson.category.title %></td>
-          <td class="border px-4 py-2"><%= lesson.level.title %></td>
-          <td class="border px-4 py-2"><%= lesson.chapter.title %></td>
+  <div id="search-results">
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <th class="px-4 py-2"><%= link_to "Title #{arrow :title}", "#", class: column_css(:title), data: { reflex: "click->LessonsReflex#order", column_name: :title, direction: direction } %></th>
+          <th><%= link_to "Category #{arrow :category}", "#", class: column_css(:category), data: { reflex: "click->LessonsReflex#order", column_name: :category, direction: direction } %></th>
+          <th>Level</th>
+          <th>Chapter</th>
         </tr>
+      </thead>
+
+      <tbody>
+        <% @lessons.each do |lesson| %>
+          <tr class="hover:bg-indigo-400">
+            <td class="border px-4 py-2 hover:text-white">
+              <%= link_to lesson do %>
+                <div style="height:100%;width:100%"><%= lesson.title %></div>
+              <% end %>
+            <td class="border px-4 py-2"><%= lesson.category.title %></td>
+            <td class="border px-4 py-2"><%= lesson.level.title %></td>
+            <td class="border px-4 py-2"><%= lesson.chapter.title %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <ul class="pagination">
+    <li class="page-item"><a href="#" class="page-link" data-reflex="click->LessonsReflex#paginate" data-page="<%= @pagy.prev %>">←</a></li>
+    <% @pagy.series.each do |item| %>
+      <% if item == :gap %>
+        <li class="page-item disabled"><a class="page-link">...</a></li>
+      <% else %>
+        <li class="page-item <%= "active" if item.is_a?(String) %>">
+          <a href="#" class="page-link" data-reflex="click->LessonsReflex#paginate" data-page="<%= item %>"><%= item %></a>
+        </li>
       <% end %>
-    </tbody>
-  </table>
+    <% end %>
+    <li class="page-item"><a href="#" class="page-link" data-reflex="click->LessonsReflex#paginate" data-page="<%= @pagy.next %>">→</a></li>
+  </ul>
 
   <br>
 

@@ -1,12 +1,31 @@
 class LessonsController < ApplicationController
+  include Pagy::Backend
+
   before_action :authenticate_user!
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
   before_action :set_admin_area, only: [:show, :edit, :index]
+  before_action :set_columns
 
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.all.includes(:category, :chapter, :level)
+    @lessons = Lesson.joins(:category, :chapter, :level)
+
+    # @query = session[:query]
+    @order_by = permitted_column_name(session[:order_by])
+    @direction = permitted_direction(session[:direction])
+    @page = (session[:page] || 1).to_i
+
+    # lessons = Lesson.includes(:category, :chapter, :level).order(@order_by => @direction)
+    # lessons = lessons.search(@query) if @query.present?
+    # pages = (lessons.count / Pagy::VARS[:items].to_f).ceil
+
+    # @page = 1 if @page > pages
+    # @pagy, @lessons = pagy(lessons, page: @page)
+
+    @lessons = filter(@lessons)
+
+    @pagy, @lessons = pagy(@lessons, page: @page)
   end
 
   # GET /lessons/1
@@ -73,4 +92,25 @@ class LessonsController < ApplicationController
     def lesson_params
       params.require(:lesson).permit(:title, :description, :category_id, :level_id, :chapter_id, :content)
     end
+
+  def permitted_column_name(column_name)
+    %w[title].find { |permitted| column_name == permitted } || "title"
+  end
+
+  def permitted_direction(direction)
+    %w[asc desc].find { |permitted| direction == permitted } || "asc"
+  end
+
+  def set_columns
+    # name, title, sortable, filterable, choices, type, editable, hash_dig, style
+    @columns = [
+      {name: "title", sortable: true, filterable: true},
+      # {title: "Category", name: "title", sortable: true, filterable: true, table: "categories"},
+      {title: "Category", name: "category_id", sortable: true, filterable: true, editable: true, choices: Category.pluck(:title, :id), type: "belongs_to"},
+      {title: "Chapter", name: "chapter_id", sortable: true, filterable: true, editable: true, choices: Chapter.pluck(:title, :id), type: "belongs_to"},
+      {title: "Level", name: "level_id", sortable: true, filterable: true, editable: true, choices: Level.pluck(:title, :id), type: "belongs_to"}
+    ]
+
+    @columns = @columns.map {|c| JSON.parse(c.to_json, object_class: OpenStruct)}
+  end
 end
