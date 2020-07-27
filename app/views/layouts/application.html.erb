@@ -12,6 +12,8 @@
 
   <body style="<%= "background-size: cover; background-image: url('#{image_path yield(:bg_image)}')" if content_for?(:bg_image) %>">
     <%= render partial: "layouts/navbar" %>
+    <%= render partial: "layouts/notif", locals: { color: "teal", message: notice } if notice %>
+    <%= render partial: "layouts/notif", locals: { color: "red", message: alert } if alert %>
     <%= yield %>
   </body>
 </html>
