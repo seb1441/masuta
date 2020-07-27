@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :categories
     resources :levels
   end
+  
+  resources :contact_messages, only: [:new, :create]
 
   devise_for :users
 end
