@@ -12,6 +12,7 @@ class ContactMessagesController < ApplicationController
         format.html { redirect_to "/", notice: 'Your message has been successfully sent!' }
       else
         flash[:alert] = "Could not send your message!"
+        Honeybadger.notify("Contact Message could not be sent!\n#{name}\n#{email}\n#{message}" + contact_message.errors.full_messages.join(" | "))
         format.html { render :new }
       end
     end

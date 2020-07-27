@@ -58,3 +58,5 @@ gem 'redis', '~> 4.1', '>= 4.1.4'
 gem 'hiredis', '~> 0.6.3'
 gem "view_component", "~> 2.7"
 gem 'pagy', '~> 3.8', '>= 3.8.2'
+
+gem "honeybadger", "~> 4.7"
