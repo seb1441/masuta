@@ -112,16 +112,15 @@ Rails.application.configure do
   config.session_store :cache_store
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "masuta.me" }
+  config.action_mailer.default_url_options = {host: "masuta.me", protocol: "http"}
 
-  # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
+    user_name: "apikey",
+    password: Rails.application.credentials.sendgrid_api_key,
     domain: "masuta.me",
-    user_name: Rails.application.credentials.mailer_email,
-    password: Rails.application.credentials.mailer_password,
-    authentication: "plain",
+    address: "smtp.sendgrid.net",
+    port: 587,
+    authentication: :plain,
     enable_starttls_auto: true
   }
 end

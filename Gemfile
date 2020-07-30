@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "standard", "~> 0.4.7"
 end
 
 group :development do
@@ -60,3 +61,5 @@ gem "view_component", "~> 2.7"
 gem 'pagy', '~> 3.8', '>= 3.8.2'
 
 gem "honeybadger", "~> 4.7"
+
+gem "sendgrid-ruby", "~> 6.3"
