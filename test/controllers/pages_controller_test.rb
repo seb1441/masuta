@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class PagesControllerTest < ActionDispatch::IntegrationTest
   test "should get home" do
@@ -30,5 +30,4 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get pages_trial_url
     assert_response :success
   end
-
 end

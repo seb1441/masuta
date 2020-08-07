@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :levels
     resources :users, only: [:index]
   end
-  
+
   resources :contact_messages, only: [:new, :create]
 
   devise_for :users

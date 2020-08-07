@@ -15,8 +15,8 @@ class Lesson < ApplicationRecord
     @enhanced_columns.push EnhancedColumn.new(name: column_name, title: title)
   end
 
-  def self.enhanced_columns
-    @enhanced_columns
+  class << self
+    attr_reader :enhanced_columns
   end
 
   enhance_column :category_id, title: "Category"

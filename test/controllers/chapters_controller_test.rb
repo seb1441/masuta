@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ChaptersControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -16,8 +16,8 @@ class ChaptersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create chapter" do
-    assert_difference('Chapter.count') do
-      post chapters_url, params: { chapter: { description: @chapter.description, position: @chapter.position, title: @chapter.title } }
+    assert_difference("Chapter.count") do
+      post chapters_url, params: {chapter: {description: @chapter.description, position: @chapter.position, title: @chapter.title}}
     end
 
     assert_redirected_to chapter_url(Chapter.last)
@@ -34,12 +34,12 @@ class ChaptersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update chapter" do
-    patch chapter_url(@chapter), params: { chapter: { description: @chapter.description, position: @chapter.position, title: @chapter.title } }
+    patch chapter_url(@chapter), params: {chapter: {description: @chapter.description, position: @chapter.position, title: @chapter.title}}
     assert_redirected_to chapter_url(@chapter)
   end
 
   test "should destroy chapter" do
-    assert_difference('Chapter.count', -1) do
+    assert_difference("Chapter.count", -1) do
       delete chapter_url(@chapter)
     end
 

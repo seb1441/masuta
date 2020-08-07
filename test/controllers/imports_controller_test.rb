@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ImportsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -16,8 +16,8 @@ class ImportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create import" do
-    assert_difference('Import.count') do
-      post imports_url, params: { import: {  } }
+    assert_difference("Import.count") do
+      post imports_url, params: {import: {}}
     end
 
     assert_redirected_to import_url(Import.last)
@@ -34,12 +34,12 @@ class ImportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update import" do
-    patch import_url(@import), params: { import: {  } }
+    patch import_url(@import), params: {import: {}}
     assert_redirected_to import_url(@import)
   end
 
   test "should destroy import" do
-    assert_difference('Import.count', -1) do
+    assert_difference("Import.count", -1) do
       delete import_url(@import)
     end
 

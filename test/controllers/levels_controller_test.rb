@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class LevelsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -16,8 +16,8 @@ class LevelsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create level" do
-    assert_difference('Level.count') do
-      post levels_url, params: { level: { description: @level.description, position: @level.position, title: @level.title } }
+    assert_difference("Level.count") do
+      post levels_url, params: {level: {description: @level.description, position: @level.position, title: @level.title}}
     end
 
     assert_redirected_to level_url(Level.last)
@@ -34,12 +34,12 @@ class LevelsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update level" do
-    patch level_url(@level), params: { level: { description: @level.description, position: @level.position, title: @level.title } }
+    patch level_url(@level), params: {level: {description: @level.description, position: @level.position, title: @level.title}}
     assert_redirected_to level_url(@level)
   end
 
   test "should destroy level" do
-    assert_difference('Level.count', -1) do
+    assert_difference("Level.count", -1) do
       delete level_url(@level)
     end
 
