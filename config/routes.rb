@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :chapters
     resources :categories
     resources :levels
+    resources :users, only: [:index]
   end
   
   resources :contact_messages, only: [:new, :create]
