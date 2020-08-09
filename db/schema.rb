@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_214406) do
+ActiveRecord::Schema.define(version: 2020_08_08_003025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 2020_07_27_214406) do
     t.integer "position", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["receiver_id"], name: "index_chat_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_chat_messages_on_sender_id"
   end
 
   create_table "contact_messages", force: :cascade do |t|
@@ -139,6 +149,8 @@ ActiveRecord::Schema.define(version: 2020_07_27_214406) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chat_messages", "users", column: "receiver_id"
+  add_foreign_key "chat_messages", "users", column: "sender_id"
   add_foreign_key "lessons", "categories"
   add_foreign_key "lessons", "chapters"
   add_foreign_key "lessons", "levels"

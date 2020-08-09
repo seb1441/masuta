@@ -7,7 +7,7 @@
   <nav class="block px-2 pt-2 pb-4 sm:flex sm:p-0">
     <% if @admin_area %>
       <%= link_to "Lessons", lessons_path, class: "mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2 #{'bg-gray-800' if request.path == lessons_path}" %>
-      <%= link_to "Users", users_path, class: "block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 #{'bg-gray-800' if request.path == users_path }" %>
+      <%= link_to "Students", users_path, class: "block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 #{'bg-gray-800' if request.path == users_path }" %>
       <%= link_to 'Students Side', pages_home_path, class: "block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 #{'bg-gray-800' if request.path == pages_home_path}" %>
     <% else %>
       <%= link_to 'Home', pages_home_path, class: "block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 #{'bg-gray-800' if request.path == pages_home_path}" %>

@@ -5,14 +5,25 @@ ruby "2.7.1"
 
 gem "rails", github: "rails/rails", branch: "master"
 
+gem "bootsnap", ">= 1.4.2", require: false
+gem "image_processing", "~> 1.2"
+gem "jbuilder", "~> 2.7"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "sass-rails", ">= 6"
-gem "webpacker", github: "rails/webpacker"
 gem "turbolinks", "~> 5"
-gem "jbuilder", "~> 2.7"
-gem "image_processing", "~> 1.2"
-gem "bootsnap", ">= 1.4.2", require: false
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem "webpacker", github: "rails/webpacker"
+
+gem "aws-sdk-s3", require: false
+gem "devise", "~> 4.7"
+gem "hiredis", "~> 0.6.3"
+gem "honeybadger", "~> 4.7"
+gem "pagy", "~> 3.8", ">= 3.8.2"
+gem "redis", "~> 4.1", ">= 4.1.4"
+gem "sendgrid-ruby", "~> 6.3"
+gem "stimulus_reflex", "~> 3.2"
+gem "view_component", "~> 2.7"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -28,17 +39,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem "stimulus_reflex", "~> 3.2"
-
-gem "devise", "~> 4.7"
-gem "aws-sdk-s3", require: false
-gem "redis", "~> 4.1", ">= 4.1.4"
-gem "hiredis", "~> 0.6.3"
-gem "view_component", "~> 2.7"
-gem "pagy", "~> 3.8", ">= 3.8.2"
-gem "honeybadger", "~> 4.7"
-gem "sendgrid-ruby", "~> 6.3"
