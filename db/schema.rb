@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_003025) do
+ActiveRecord::Schema.define(version: 2020_08_16_130941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,41 @@ ActiveRecord::Schema.define(version: 2020_08_08_003025) do
 
   create_table "roles", force: :cascade do |t|
     t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stripe_customers", id: :string, force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.string "object"
+    t.jsonb "address"
+    t.integer "balance"
+    t.integer "created"
+    t.jsonb "sources"
+    t.jsonb "tax_ids"
+    t.string "currency"
+    t.jsonb "discount"
+    t.boolean "livemode"
+    t.jsonb "metadata"
+    t.jsonb "shipping"
+    t.boolean "delinquent"
+    t.string "tax_exempt"
+    t.text "description"
+    t.jsonb "subscriptions"
+    t.string "default_source"
+    t.string "invoice_prefix"
+    t.jsonb "invoice_settings"
+    t.string "preferred_locales", array: true
+    t.integer "next_invoice_sequence"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stripe_webhook_events", force: :cascade do |t|
+    t.jsonb "data", null: false
+    t.string "event_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

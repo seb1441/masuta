@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_admin_area, only: [:show, :index]
 
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
   end
 
   def show

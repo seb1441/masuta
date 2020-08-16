@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-admin_role = Role.create(slug: "admin")
-Role.create(slug: "student")
-User.create(email: "changeme@fake.com", password: "test", role: admin_role)
+admin_role = Role.find_or_create_by(slug: "admin")
+Role.find_or_create_by(slug: "student")
+user = User.find_or_create_by(email: "changeme@fake.com") do |user|
+  user.password = "test123"
+end
+user.roles = [admin_role]

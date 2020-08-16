@@ -5,6 +5,15 @@ Rails.application.routes.draw do
   get "/lessons", to: "pages#lessons", as: :pages_lessons
   get "/reviews", to: "pages#reviews", as: :pages_reviews
   get "/trial", to: "pages#trial", as: :pages_trial
+  get "/my_teacher", to: "pages#my_teacher", as: :my_teacher
+
+  get "/checkout", to: "checkout#index", as: :checkout
+  get "/checkout/success", to: "checkout#success", as: :checkout_success
+  get "/checkout/cancel", to: "checkout#cancel", as: :checkout_cancel
+
+  namespace :api do
+    resources :stripe_webhook_events, only: [:create]
+  end
 
   scope :back do
     resources :imports

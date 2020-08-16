@@ -39,3 +39,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "stripe", "~> 5.23"

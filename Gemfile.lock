@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 23229d24533218bbbef04eba0fca8809ad00f9d7
+  revision: d72ade10a68ccefd2414b76a621dac326e0a6ea3
   branch: master
   specs:
     actioncable (6.1.0.alpha)
@@ -142,7 +142,7 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     crass (1.0.6)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -257,6 +257,7 @@ GEM
       nokogiri
       rack
       rails (>= 5.2)
+    stripe (5.23.1)
     thor (1.0.1)
     tilt (2.0.10)
     turbolinks (5.2.1)
@@ -303,6 +304,7 @@ DEPENDENCIES
   sendgrid-ruby (~> 6.3)
   standard (~> 0.4.7)
   stimulus_reflex (~> 3.2)
+  stripe (~> 5.23)
   turbolinks (~> 5)
   tzinfo-data
   view_component (~> 2.7)
