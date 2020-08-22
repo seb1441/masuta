@@ -7,13 +7,11 @@ Rails.application.routes.draw do
   get "/trial", to: "pages#trial", as: :pages_trial
   get "/my_teacher", to: "pages#my_teacher", as: :my_teacher
 
-  get "/checkout", to: "checkout#index", as: :checkout
-  get "/checkout/success", to: "checkout#success", as: :checkout_success
-  get "/checkout/cancel", to: "checkout#cancel", as: :checkout_cancel
-
   namespace :api do
     resources :stripe_webhook_events, only: [:create]
   end
+
+  resources :stripe_products, only: [:show]
 
   scope :back do
     resources :imports

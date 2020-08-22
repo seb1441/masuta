@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_130941) do
+ActiveRecord::Schema.define(version: 2020_08_18_130741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,16 @@ ActiveRecord::Schema.define(version: 2020_08_16_130941) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "scheduled_lessons", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.boolean "trial"
+    t.integer "status"
+    t.datetime "scheduled_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_scheduled_lessons_on_user_id"
+  end
+
   create_table "stripe_customers", id: :string, force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -136,6 +146,46 @@ ActiveRecord::Schema.define(version: 2020_08_16_130941) do
     t.jsonb "invoice_settings"
     t.string "preferred_locales", array: true
     t.integer "next_invoice_sequence"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stripe_prices", id: :string, force: :cascade do |t|
+    t.string "s_type"
+    t.boolean "active"
+    t.string "object"
+    t.integer "created"
+    t.string "stripe_product_id", null: false
+    t.string "currency"
+    t.boolean "livemode"
+    t.jsonb "metadata"
+    t.string "nickname"
+    t.jsonb "recurring"
+    t.string "lookup_key"
+    t.string "tiers_mode"
+    t.integer "unit_amount"
+    t.string "billing_scheme"
+    t.jsonb "transform_quantity"
+    t.integer "unit_amount_decimal"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stripe_product_id"], name: "index_stripe_prices_on_stripe_product_id"
+  end
+
+  create_table "stripe_products", id: :string, force: :cascade do |t|
+    t.string "name"
+    t.string "s_type"
+    t.boolean "active"
+    t.string "images", array: true
+    t.string "object"
+    t.integer "created"
+    t.integer "updated"
+    t.boolean "livemode"
+    t.jsonb "metadata"
+    t.string "s_attributes", array: true
+    t.string "unit_label"
+    t.text "description"
+    t.string "statement_descriptor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -168,9 +218,13 @@ ActiveRecord::Schema.define(version: 2020_08_16_130941) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.string "temporary_stripe_checkout_session_id"
+    t.string "stripe_customer_id"
+    t.integer "lesson_minutes", default: 0
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["stripe_customer_id"], name: "index_users_on_stripe_customer_id"
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
@@ -189,6 +243,9 @@ ActiveRecord::Schema.define(version: 2020_08_16_130941) do
   add_foreign_key "lessons", "categories"
   add_foreign_key "lessons", "chapters"
   add_foreign_key "lessons", "levels"
+  add_foreign_key "scheduled_lessons", "users"
+  add_foreign_key "stripe_prices", "stripe_products"
+  add_foreign_key "users", "stripe_customers"
   add_foreign_key "users_roles", "roles"
   add_foreign_key "users_roles", "users"
 end

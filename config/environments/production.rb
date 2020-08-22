@@ -123,4 +123,7 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
+
+  config.hosts = ["masuta.me", "masuta.herokuapp.com"]
+  Rails.application.routes.default_url_options[:host] = "masuta.me"
 end

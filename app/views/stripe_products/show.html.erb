@@ -1,0 +1,40 @@
+<%#= @price %>
+<%# <br> %>
+<%#= number_field_tag :lessons_count, 1, min: 1, data: { reflex: "input->checkout#create", product_id: @stripe_product.id } %>
+<%#= link_to "Buy", "#", data: {controller: "stripe", target: "stripe.button", action: "click->stripe#checkout", checkout_session_id: @stripe_checkout_session_id, id: @stripe_publishable_key  } %>
+<%# if @stripe_checkout_session_id %>
+<%#else %>
+  <%#= form_with data: { reflex: "submit->checkout#create", product_id: @stripe_product.id  } do |f| %>
+    <%#= f.number_field :lessons_count, value: 1, min: 1 %>
+    <%#= f.submit "Buy" %>
+  <%# end %>
+<%# end %>
+<section class="text-gray-700 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="lg:w-4/5 mx-auto flex flex-wrap">
+<%= image_tag "bg2.jpg" %>
+      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://rabineupane.com.np/wp-content/uploads/2019/05/nihongo.gif">
+      <%# <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1969&q=80"> %>
+      <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">MASUTA</h2>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">Japanese Lesson</h1>
+        <div class="flex mb-4">
+          <span class="flex items-center">
+            <span class="text-gray-600 text-center">50 minutes</span>
+          </span>
+        </div>
+        <p class="leading-relaxed">Japanese Lesson given by our wonderful teacher Yukiko!</p>
+        <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
+          <div class="flex items-center">
+            <span class="mr-3">Quantity</span>
+            <%= number_field_tag :lessons_count, 1, min: 1, max: 1000, data: {reflex: "debounced:input->checkout#create", product_id: @stripe_product.id }, class: "rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-indigo-500 text-base pl-3 pr-2 w-20" %>
+          </div>
+        </div>
+        <div class="flex">
+          <span class="title-font font-medium text-2xl text-gray-900"><%= number_to_currency(@price) %></span>
+          <%= link_to "Buy", "#", data: {controller: "stripe", target: "stripe.button", action: "click->stripe#checkout", checkout_session_id: @stripe_checkout_session_id, id: @stripe_publishable_key  }, class: "flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

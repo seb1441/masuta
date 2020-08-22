@@ -1,7 +1,7 @@
 <nav class="bg-indigo-<%= @admin_area ? '600' : '300' %> sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
   <div class="flex items-center justify-between px-4 py-3 sm:p-0">
     <%# <div class="text-6xl mr-4 border-solid border h-19"><h1 class="-mt-4 -mb-2 text-white">主</h1></div> %>
-    <%= link_to "Masuta", pages_home_path, class: "font-semibold text-5xl tracking-tight got-font tracking-wide text-white select-none" %>
+    <%= link_to "Masuta", pages_home_path, class: "font-semibold text-5xl tracking-tight got-font tracking-wide text-white select-none" %><span class="ml-6 text-xl font-semibold">Learn Japanese</span>
   </div>
   <%# block/hidden %>
   <nav class="block px-2 pt-2 pb-4 sm:flex sm:p-0">
@@ -12,6 +12,7 @@
     <% else %>
       <%= link_to 'Home', pages_home_path, class: "block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 #{'bg-gray-800' if request.path == pages_home_path}" %>
       <%= link_to 'About', pages_about_path, class: "mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2 #{'bg-gray-800' if request.path == pages_about_path}" %>
+      <%#= link_to 'Buy Lessons', stripe_product_path(StripeProduct.first), class: "mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2 #{'bg-gray-800' if request.path == stripe_product_path(StripeProduct.first)}" %>
       <%= link_to 'Lessons', pages_lessons_path, class: "mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2 #{'bg-gray-800' if request.path == pages_lessons_path}" %>
       <%= link_to 'Reviews', pages_reviews_path, class: "mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2 #{'bg-gray-800' if request.path == pages_reviews_path}" %>
       <%= link_to 'Contact', new_contact_message_path, class: "mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:mt-0 sm:ml-2 #{'bg-gray-800' if request.path == new_contact_message_path }" %>

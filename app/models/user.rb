@@ -5,6 +5,9 @@ class User < ApplicationRecord
 
   has_many :users_roles, dependent: :destroy
   has_many :roles, through: :users_roles
+  has_many :scheduled_lessons, dependent: :destroy
+
+  belongs_to :stripe_customer, optional: true
 
   after_create :add_default_role
 
