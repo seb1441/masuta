@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_130741) do
+ActiveRecord::Schema.define(version: 2020_08_29_184434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -193,6 +193,15 @@ ActiveRecord::Schema.define(version: 2020_08_18_130741) do
   create_table "stripe_webhook_events", force: :cascade do |t|
     t.jsonb "data", null: false
     t.string "event_type", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "testimonials", force: :cascade do |t|
+    t.date "date"
+    t.string "name"
+    t.text "message"
+    t.string "image_path"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

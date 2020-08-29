@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+    @testimonials = Testimonial.order(date: :desc)
   end
 
   def contact
