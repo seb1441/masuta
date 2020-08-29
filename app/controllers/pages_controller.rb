@@ -5,9 +5,6 @@ class PagesController < ApplicationController
   def contact
   end
 
-  def reviews
-  end
-
   def trial
   end
 
