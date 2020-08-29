@@ -20,7 +20,6 @@ class ContactMessagesController < ApplicationController
 
   private
 
-  # Only allow a list of trusted parameters through.
   def contact_message_params
     params.require(:contact_message).permit(:name, :email, :message)
   end
