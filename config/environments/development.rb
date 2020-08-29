@@ -76,6 +76,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.hosts = ["localhost"]
+  config.hosts = ["localhost", "allbackend"]
   Rails.application.routes.default_url_options[:host] = "localhost:3000"
 end

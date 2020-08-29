@@ -23,6 +23,11 @@
    src: asset-url('yellow-rabbit.otf') format('truetype')
 }
 
+@font-face {
+   font-family: 'Action Jackson';
+   src: asset-url('actionj.ttf') format('truetype')
+}
+
 .got-font {
   font-family: 'Yellow Rabbit';
 }
