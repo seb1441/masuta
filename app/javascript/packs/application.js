@@ -17,7 +17,9 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import "controllers"
-require('css/application.scss')
+require('stylesheets/application.scss')
 require("trix")
 require("@rails/actiontext")
 import "../trix-editor-overrides"
+import 'bootstrap/dist/js/bootstrap'
+// import 'bootstrap/dist/css/bootstrap'

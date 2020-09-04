@@ -1,0 +1,11 @@
+@import './trix.scss';
+$primary: #abdee5;
+$secondary: #ff4136;
+$dark: #0c5460;
+$light: #abdee5;
+
+@import 'bootstrap/scss/bootstrap';
+
+h1 {
+  color: $cyan-800;
+}
