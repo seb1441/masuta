@@ -18,13 +18,15 @@ export default class extends ApplicationController {
   }
 
   initializeFlickity() {
+    console.log('GG')
     this.destroyFlickity()
-    let flkty = new Flickity(this.element, {adaptiveHeight: true, fullscreen: true,})
+    let flkty = new Flickity(".carousel", {adaptiveHeight: true, fullscreen: true, cellAlign: 'left', contain: true})
     console.log(flkty)
   }
 
   destroyFlickity() {
-    const flkty = Flickity.data(this.element)
+    const flkty = Flickity.data(".carousel")
+    console.log(flkty)
     if (flkty) flkty.destroy()
   }
 }
