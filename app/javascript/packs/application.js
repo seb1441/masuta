@@ -16,6 +16,7 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+require("flickity")
 import "controllers"
 require('css/application.scss')
 require("trix")

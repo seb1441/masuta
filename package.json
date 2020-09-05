@@ -9,6 +9,7 @@
     "@rails/webpacker": "5.1.1",
     "@stripe/stripe-js": "^1.9.0",
     "debounced": "^0.0.5",
+    "flickity": "^2.2.1",
     "stimulus": "^1.1.1",
     "stimulus_reflex": "^3.2.2",
     "tailwindcss": "^1.4.6",
