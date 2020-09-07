@@ -14,3 +14,7 @@ application.load(definitionsFromContext(context))
 StimulusReflex.initialize(application, { consumer, controller, debug: false })
 
 debounced.initialize()
+
+import { Alert, Toggle } from "tailwindcss-stimulus-components"
+application.register('alert', Alert)
+application.register('toggle', Toggle)

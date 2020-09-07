@@ -41,6 +41,7 @@
     </table>
   </div>
 
+  <%# Replace with pagy helper? %>
   <ul class="pagination">
     <li class="page-item"><a href="#" class="page-link" data-reflex="click->LessonsReflex#paginate" data-page="<%= @pagy.prev %>">←</a></li>
     <% @pagy.series.each do |item| %>
