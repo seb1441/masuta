@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_29_184434) do
+ActiveRecord::Schema.define(version: 2020_09_07_230639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,16 +112,6 @@ ActiveRecord::Schema.define(version: 2020_08_29_184434) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "scheduled_lessons", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.boolean "trial"
-    t.integer "status"
-    t.datetime "scheduled_date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_scheduled_lessons_on_user_id"
-  end
-
   create_table "stripe_customers", id: :string, force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -206,6 +196,17 @@ ActiveRecord::Schema.define(version: 2020_08_29_184434) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_lessons", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.boolean "trial", default: false
+    t.integer "status"
+    t.datetime "scheduled_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "stripe_payment_intent_id"
+    t.index ["user_id"], name: "index_user_lessons_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -252,8 +253,8 @@ ActiveRecord::Schema.define(version: 2020_08_29_184434) do
   add_foreign_key "lessons", "categories"
   add_foreign_key "lessons", "chapters"
   add_foreign_key "lessons", "levels"
-  add_foreign_key "scheduled_lessons", "users"
   add_foreign_key "stripe_prices", "stripe_products"
+  add_foreign_key "user_lessons", "users"
   add_foreign_key "users", "stripe_customers"
   add_foreign_key "users_roles", "roles"
   add_foreign_key "users_roles", "users"

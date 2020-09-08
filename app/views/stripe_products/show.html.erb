@@ -20,7 +20,7 @@
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">Japanese Lesson</h1>
         <div class="flex mb-4">
           <span class="flex items-center">
-            <span class="text-gray-600 text-center">50 minutes</span>
+            <span class="text-gray-600 text-center">45 minutes</span>
           </span>
         </div>
         <p class="leading-relaxed">Japanese Lesson given by our wonderful teacher Yukiko!</p>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="flex">
-          <span class="title-font font-medium text-2xl text-gray-900"><%= number_to_currency(@price) %></span>
+          <span class="title-font font-medium text-2xl text-gray-900"><%= number_to_currency(@price, unit: "CA$") %></span>
           <%= link_to "Buy", "#", data: {controller: "stripe", target: "stripe.button", action: "click->stripe#checkout", checkout_session_id: @stripe_checkout_session_id, id: @stripe_publishable_key  }, class: "flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" %>
         </div>
       </div>

@@ -16,12 +16,15 @@ class Api::StripeWebhookEventsController < Api::ApplicationController
     when "checkout.session.completed"
       stripe_customer_id = object_data["customer"]
       session_id = object_data["id"]
-      user = User.find_by(temporary_stripe_checkout_session_id: session_id)
-      user&.update(
-        stripe_customer_id: stripe_customer_id,
-        temporary_stripe_checkout_session_id: nil,
-        lesson_minutes: user.lesson_minutes + 50 # make sure that if the same webhook comes again because previous one failed that it doesn't add another 50 minutes
-      )
+      if (user = User.find_by(temporary_stripe_checkout_session_id: session_id))
+        quantity = Stripe::Checkout::Session.list_line_items(session_id, {limit: 1}).data.first.quantity
+        quantity.times do
+          user.user_lessons.find_or_initialize_by(stripe_payment_intent_id: object_data["payment_intent"])
+        end
+        user.stripe_customer_id = stripe_customer_id
+        user.temporary_stripe_checkout_session_id = nil
+        user.save
+      end
     when "product.created"
       object_data["s_type"] = object_data.delete("type") # Should not name a column "type" in Rails
       object_data["s_attributes"] = object_data.delete("attributes") # Should not name a column "attributes" in Rails
