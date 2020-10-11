@@ -38,3 +38,6 @@ yarn-debug.log*
 /config/credentials/production.key
 
 /config/credentials/development.key
+
+.idea/
+.DS_Store

@@ -24,6 +24,7 @@ class Api::StripeWebhookEventsController < Api::ApplicationController
         user.stripe_customer_id = stripe_customer_id
         user.temporary_stripe_checkout_session_id = nil
         user.save
+        UserMailer.bought_lesson(name: user.full_name, email: user.email, lesson_count: quantity).deliver_now
       end
     when "product.created"
       object_data["s_type"] = object_data.delete("type") # Should not name a column "type" in Rails
@@ -34,9 +35,7 @@ class Api::StripeWebhookEventsController < Api::ApplicationController
     when "product.deleted"
       StripeProduct.find(object_data["id"]).destroy
     when "price.created"
-      object_data["s_type"] = object_data.delete("type") # Should not name a column "type" in Rails
-      object_data["stripe_product_id"] = object_data.delete("product") # For rails conventions
-      StripePrice.create(object_data)
+      StripeServices::ImportProduct.new(object_data).call
     when "price.updated"
       StripePrice.find(object_data["id"]).update(object_data)
     when "price.deleted"

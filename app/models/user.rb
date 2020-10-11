@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def add_default_role
     roles << Role.find_by_slug("student")
   end
+
+  def full_name
+    [first_name, last_name].compact.join(" ")
+  end
 end

@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="flex">
-          <span class="title-font font-medium text-2xl text-gray-900"><%= number_to_currency(@price, unit: "CA$") %></span>
+          <span class="title-font font-medium text-2xl text-gray-900"><%= number_to_currency(@price, unit: "CA$") %> </span><span> (~<%= number_to_currency(@price / 1.35, unit: "US$") %>)</span>
           <%= link_to "Buy", "#", data: {controller: "stripe", target: "stripe.button", action: "click->stripe#checkout", checkout_session_id: @stripe_checkout_session_id, id: @stripe_publishable_key  }, class: "flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" %>
         </div>
       </div>
