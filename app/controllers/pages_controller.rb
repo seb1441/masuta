@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   end
 
   def trial
+    authenticate_user!
   end
 
   def my_teacher

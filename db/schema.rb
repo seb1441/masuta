@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_11_002730) do
+ActiveRecord::Schema.define(version: 2020_10_13_000238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -233,13 +233,13 @@ ActiveRecord::Schema.define(version: 2020_10_11_002730) do
     t.integer "lesson_minutes", default: 0
     t.string "first_name"
     t.string "last_name"
-    t.string "city"
-    t.string "country"
     t.string "convenient_weekdays"
     t.string "convenient_hours"
     t.string "skype_id"
     t.string "level"
     t.string "note"
+    t.string "timezone"
+    t.string "comments"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

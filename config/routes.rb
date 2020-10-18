@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :stripe_webhook_events, only: [:create]
   end
 
+  resources :user_lessons, only: [:create]
+
   resources :stripe_products, only: [:show]
 
   scope :back do

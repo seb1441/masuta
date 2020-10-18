@@ -7,9 +7,19 @@ class UserMailer < ApplicationMailer
   end
 
   def bought_lesson(name:, email:, lesson_count:)
-    @name = name
-    @email = email
+    @name = name # TODO: Use or remove this variable
     @lesson_count = lesson_count
     mail(to: email, subject: "Masuta - Lesson bought")
+  end
+
+  def user_trial(name:, email:)
+    @name = name
+    @email = email
+    mail(to: email, subject: "Masuta - Trial")
+  end
+
+  def teacher_trial(user:)
+    @user = user
+    mail(to: Rails.application.credentials.mailer_email, subject: "Masuta - Trial")
   end
 end
