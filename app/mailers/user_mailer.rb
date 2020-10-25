@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
     @name = name
     @email = email
     @message = message
-    mail(to: Rails.application.credentials.mailer_email, subject: "Contact Page Message")
+    mail(to: Rails.application.credentials.mailer_to_email, subject: "Contact Page Message")
   end
 
   def bought_lesson(name:, email:, lesson_count:)
@@ -20,6 +20,6 @@ class UserMailer < ApplicationMailer
 
   def teacher_trial(user:)
     @user = user
-    mail(to: Rails.application.credentials.mailer_email, subject: "Masuta - Trial")
+    mail(to: Rails.application.credentials.mailer_to_email, subject: "Masuta - Trial")
   end
 end
