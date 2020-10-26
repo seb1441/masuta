@@ -2,9 +2,7 @@
 <div class="container w-full max-w-xs mx-auto">
   <% if resource.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
-
-      <ul>
+      <ul style="color: red;">
         <% resource.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
