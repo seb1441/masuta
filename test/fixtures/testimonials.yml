@@ -1,4 +1,15 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# == Schema Information
+#
+# Table name: testimonials
+#
+#  id         :bigint           not null, primary key
+#  date       :date
+#  image_path :string
+#  message    :text
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 
 one:
   date: 2020-08-29

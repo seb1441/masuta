@@ -32,6 +32,7 @@ end
 
 group :development do
   gem "web-console", github: "rails/web-console"
+  gem "annotate"
 end
 
 group :test do
