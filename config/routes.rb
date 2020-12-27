@@ -27,5 +27,5 @@ Rails.application.routes.draw do
   end
     # resources :chat_participants, only: [:new, :create]
 
-  devise_for :users
+  devise_for :users, controllers: { sessions: "users/sessions" }
 end
