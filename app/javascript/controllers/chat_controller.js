@@ -5,7 +5,7 @@ export default class extends ApplicationController {
     console.log('chat controller connected')
     window.addEventListener('turbo:submit-end', (event) => {
       console.log('turbo:submit-end', event)
-      if (event.detail.fetchResponse.response.url.includes("/chat_rooms/10/chat_messages")) {
+      if (event.detail.fetchResponse.response.url.includes("/chat_messages")) {
         var observer = new MutationObserver(function(mutations) {
           mutations.forEach(function(mutation) {
             let lastMessage = mutation.addedNodes[0].children[0]
