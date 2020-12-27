@@ -9,21 +9,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @chat_room = ChatRoom
-      .joins(:chat_participants)
-      .where(
-        chat_participants: {
-          user: current_user
-        }
-      )
-      .merge(
-        ChatRoom
-        .joins(:chat_participants)
-        .where(chat_participants: {
-          user: @user
-        }
-      )
-    ).distinct.first
+    user_chat_rooms = ChatRoom.joins(:chat_participants).where(chat_participants: { user: @user })
+
+    @chat_room = user_chat_rooms.find_all { |room| room.chat_participants.any? { |participant| participant.user == current_user } }.first
 
     unless @chat_room
       @chat_room = ChatRoom.create
