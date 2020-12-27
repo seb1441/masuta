@@ -24,14 +24,21 @@ class Users::SessionsController < Devise::SessionsController
           respond_with resource, location: after_sign_in_path_for(resource)
         end
       end
-      format.html { redirect_to '/' }
+      format.html { redirect_to "/" }
     end
   end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    respond_to do |format|
+      format.turbo_stream do
+        Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+        flash[:notice] = "Successfully signed out!"
+        yield if block_given?
+        redirect_to "/"
+      end
+    end
+  end
 
   # protected
 
