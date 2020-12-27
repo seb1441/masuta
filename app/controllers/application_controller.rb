@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
+  before_action :set_current_user
+
+  def set_current_user
+    Current.user = current_user
+  end
+
   def set_admin_area
     raise ActionController::RoutingError.new("Not Found") unless current_user&.role? :admin
     @admin_area = true

@@ -2,10 +2,10 @@
   "name": "masuta",
   "private": true,
   "dependencies": {
+    "@hotwired/turbo-rails": "^7.0.0-beta.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/actiontext": "^6.0.3-1",
     "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.1.1",
     "@stripe/stripe-js": "^1.9.0",
     "debounced": "^0.0.5",
@@ -14,8 +14,7 @@
     "stimulus_reflex": "^3.2.2",
     "tailwindcss": "^1.4.6",
     "tailwindcss-stimulus-components": "^2.0.8",
-    "trix": "^1.2.0",
-    "turbolinks": "^5.2.0"
+    "trix": "^1.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {

@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   end
 
   resources :contact_messages, only: [:new, :create]
+  resources :chat_rooms, only: [:show] do
+    resources :chat_messages, only: [:new, :create]
+  end
+    # resources :chat_participants, only: [:new, :create]
 
   devise_for :users
 end

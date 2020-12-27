@@ -8,6 +8,27 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @chat_messages = ChatMessage.includes(:sender, :receiver).where(sender: current_user, receiver: @user).or(ChatMessage.where(receiver: current_user, sender: @user))
+
+    @chat_room = ChatRoom
+      .joins(:chat_participants)
+      .where(
+        chat_participants: {
+          user: current_user
+        }
+      )
+      .merge(
+        ChatRoom
+        .joins(:chat_participants)
+        .where(chat_participants: {
+          user: @user
+        }
+      )
+    ).distinct.first
+
+    unless @chat_room
+      @chat_room = ChatRoom.create
+      @chat_room.chat_participants.create user: current_user
+      @chat_room.chat_participants.create user: @user
+    end
   end
 end

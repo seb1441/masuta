@@ -4,6 +4,13 @@ export default class extends Controller {
   static targets = [ "content" ]
 
   connect() {
-    this.contentTarget.scrollTop = this.contentTarget.scrollHeight
+    if (this.hasContentTarget) {
+      this.contentTarget.scrollTop = this.contentTarget.scrollHeight
+    }
+
+    let chatWindow = document.getElementById("chat-window")
+    if (chatWindow) {
+      chatWindow.scrollTop = 99999
+    }
   }
 }

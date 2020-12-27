@@ -57,9 +57,14 @@ class User < ApplicationRecord
   has_many :roles, through: :users_roles
   has_many :user_lessons, dependent: :destroy
 
+  has_many :chat_participants
+  has_many :chat_rooms, through: :chat_participants
+
   belongs_to :stripe_customer, optional: true
 
   after_create :add_default_role
+
+  # broadcasts
 
   def role?(role)
     roles.exists?(slug: role)

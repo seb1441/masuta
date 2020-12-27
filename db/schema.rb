@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_000238) do
+ActiveRecord::Schema.define(version: 2020_12_25_143716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,12 +64,26 @@ ActiveRecord::Schema.define(version: 2020_10_13_000238) do
 
   create_table "chat_messages", force: :cascade do |t|
     t.text "content"
-    t.bigint "sender_id", null: false
-    t.bigint "receiver_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["receiver_id"], name: "index_chat_messages_on_receiver_id"
-    t.index ["sender_id"], name: "index_chat_messages_on_sender_id"
+    t.bigint "user_id"
+    t.bigint "chat_room_id"
+    t.index ["chat_room_id"], name: "index_chat_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_chat_messages_on_user_id"
+  end
+
+  create_table "chat_participants", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "chat_room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chat_room_id"], name: "index_chat_participants_on_chat_room_id"
+    t.index ["user_id"], name: "index_chat_participants_on_user_id"
+  end
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "contact_messages", force: :cascade do |t|
@@ -257,8 +271,10 @@ ActiveRecord::Schema.define(version: 2020_10_13_000238) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "chat_messages", "users", column: "receiver_id"
-  add_foreign_key "chat_messages", "users", column: "sender_id"
+  add_foreign_key "chat_messages", "chat_rooms"
+  add_foreign_key "chat_messages", "users"
+  add_foreign_key "chat_participants", "chat_rooms"
+  add_foreign_key "chat_participants", "users"
   add_foreign_key "lessons", "categories"
   add_foreign_key "lessons", "chapters"
   add_foreign_key "lessons", "levels"

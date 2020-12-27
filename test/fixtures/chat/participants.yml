@@ -1,18 +1,17 @@
 # == Schema Information
 #
-# Table name: chat_messages
+# Table name: chat_participants
 #
 #  id           :bigint           not null, primary key
-#  content      :text
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  chat_room_id :bigint
-#  user_id      :bigint
+#  chat_room_id :bigint           not null
+#  user_id      :bigint           not null
 #
 # Indexes
 #
-#  index_chat_messages_on_chat_room_id  (chat_room_id)
-#  index_chat_messages_on_user_id       (user_id)
+#  index_chat_participants_on_chat_room_id  (chat_room_id)
+#  index_chat_participants_on_user_id       (user_id)
 #
 # Foreign Keys
 #
@@ -21,11 +20,9 @@
 #
 
 one:
-  content: MyText
-  sender: one
-  receiver: one
+  user: one
+  room: one
 
 two:
-  content: MyText
-  sender: two
-  receiver: two
+  user: two
+  room: two

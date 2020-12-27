@@ -11,7 +11,7 @@ gem "jbuilder", "~> 2.7"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "sass-rails", ">= 6"
-gem "turbolinks", "~> 5"
+# gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "webpacker", github: "rails/webpacker"
 
@@ -27,7 +27,7 @@ gem "view_component", "~> 2.7"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "standard", "~> 0.4.7"
+  gem "standard", "~> 0.10.0"
 end
 
 group :development do
@@ -42,3 +42,5 @@ group :test do
 end
 
 gem "stripe", "~> 5.23"
+
+gem "turbo-rails", "~> 0.5.1"
