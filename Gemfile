@@ -5,15 +5,16 @@ ruby "2.7.2"
 
 gem "rails", github: "rails/rails", branch: "master"
 
-gem "bootsnap", ">= 1.4.2", require: false
-gem "image_processing", "~> 1.2"
-gem "jbuilder", "~> 2.7"
-gem "pg", ">= 0.18", "< 2.0"
-gem "puma", "~> 4.1"
+gem "bootsnap", "~> 1.5", ">= 1.5.1", require: false
+gem "image_processing", "~> 1.12", ">= 1.12.1"
+gem "jbuilder", "~> 2.10", ">= 2.10.1"
+gem "pg", "~> 1.2", ">= 1.2.3"
+gem "puma", "~> 5.1", ">= 5.1.1"
 gem "sass-rails", ">= 6"
 # gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "webpacker", github: "rails/webpacker"
+# gem "webpacker", github: "rails/webpacker"
+gem "webpacker", "~> 5.1"
 
 gem "aws-sdk-s3", require: false
 gem "devise", "~> 4.7"
