@@ -26,7 +26,6 @@ export default class extends ApplicationController {
   destroyFlickity() {
     var elem = document.querySelector(".carousel");
     const flkty = Flickity.data(elem)
-    console.log(flkty)
     if (flkty) flkty.destroy()
   }
 }

@@ -3,7 +3,6 @@ import ApplicationController from './application_controller'
 export default class extends ApplicationController {
   connect() {
     window.addEventListener('turbo:submit-end', (event) => {
-      console.log('turbo:submit-end', event)
       if (event.detail.fetchResponse.response.url.includes("/chat_messages")) {
         var observer = new MutationObserver(function(mutations) {
           mutations.forEach(function(mutation) {
