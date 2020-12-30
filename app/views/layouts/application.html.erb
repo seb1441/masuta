@@ -16,8 +16,8 @@
 
   <body>
     <%= render partial: "layouts/navbar" %>
-    <%= render partial: "layouts/notif", locals: { color: "teal", message: notice } if notice %>
-    <%= render partial: "layouts/notif", locals: { color: "red", message: alert } if alert %>
+    <%= render partial: "layouts/notif", locals: { bg_color: "bg-blue-400", border_color: "border-blue-700", message: notice } if notice %>
+    <%= render partial: "layouts/notif", locals: { bg_color: "bg-red-400", border_color: "border-red-700", message: alert } if alert %>
 
     <%= yield %>
 
