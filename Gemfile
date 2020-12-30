@@ -13,8 +13,8 @@ gem "puma", "~> 5.1", ">= 5.1.1"
 gem "sass-rails", ">= 6"
 # gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-# gem "webpacker", github: "rails/webpacker"
-gem "webpacker", "~> 5.1"
+gem "webpacker", github: "rails/webpacker"
+# gem "webpacker", "~> 5.1"
 
 gem "aws-sdk-s3", require: false
 gem "devise", "~> 4.7"

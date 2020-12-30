@@ -16,9 +16,9 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import "stylesheets/application"
 require("flickity")
 import "controllers"
-require('css/application.scss')
 require("trix")
 require("@rails/actiontext")
 import "../trix-editor-overrides"
