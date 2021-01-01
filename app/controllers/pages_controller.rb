@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_action :authenticate_user_hw!, only: [:trial, :my_teacher]
+
   def home
     @testimonials = Testimonial.order(date: :desc)
   end
@@ -7,7 +9,6 @@ class PagesController < ApplicationController
   end
 
   def trial
-    authenticate_user!
   end
 
   def my_teacher

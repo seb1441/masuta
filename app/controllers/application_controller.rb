@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
 
   before_action :set_current_user
 
+  # This method exists because devise is currently broken with HW Turbo
+  def authenticate_user_hw!
+    unless warden.authenticate
+      flash[:notice] = "You need to be signed in to access this page!"
+      redirect_to new_user_session_path
+    end
+  end
+
   def set_current_user
     Current.user = current_user if user_signed_in?
   end
