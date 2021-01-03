@@ -23,6 +23,4 @@ require("trix")
 require("@rails/actiontext")
 import "../trix-editor-overrides"
 
-document.addEventListener('turbo:load', () => {
-  console.log('GNHDSUGFUD')
-})
+import "@hotwired/turbo-rails"

@@ -1,5 +1,5 @@
-<div data-controller="scrolldown" id="<%= dom_id chat_message %>" class="clearfix">
-  <div class="<%= chat_message.user_id != Current.user&.id ? "bg-gray-300" : "bg-blue-300 float-right" %> w-3/4 mx-4 my-2 p-2 rounded-lg clearfix" data-user-id="<%= chat_message.user_id %>">
+<div data-controller="scrolldown" id="<%= dom_id chat_message %>" class="flow-root">
+  <div class="<%= chat_message.user_id != Current.user&.id ? "bg-gray-300" : "bg-blue-300 float-right" %> w-3/4 mx-4 my-2 p-2 rounded-lg flow-root" data-user-id="<%= chat_message.user_id %>">
     <%= chat_message.content %>
   </div>
 </div>
