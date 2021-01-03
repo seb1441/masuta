@@ -12,19 +12,19 @@
   <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), local: true, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4") do |f| %>
     <div class="mb-4">
       <%= f.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring" %>
     </div>
     <div class="mb-6">
       <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
-      <%= f.password_field :password, autocomplete: "new-password", class: "shadow appearance-none borde rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "shadow appearance-none borde rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring" %>
       <i>6 characters minimum!</i>
     </div>
     <div class="mb-6">
       <%= f.label :password_confirmation, class: "block text-gray-700 text-sm font-bold mb-2" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "shadow appearance-none borde rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "shadow appearance-none borde rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring" %>
     </div>
     <div class="flex items-center justify-center">
-      <%= f.submit "Sign Up", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+      <%= f.submit "Sign Up", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring" %>
     </div>
   <% end %>
 </div>
