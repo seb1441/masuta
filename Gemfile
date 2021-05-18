@@ -9,7 +9,7 @@ gem "bootsnap", "~> 1.5", ">= 1.5.1", require: false
 gem "image_processing", "~> 1.12", ">= 1.12.1"
 gem "jbuilder", "~> 2.10", ">= 2.10.1"
 gem "pg", "~> 1.2", ">= 1.2.3"
-gem "puma", "~> 5.1", ">= 5.1.1"
+gem "puma", "~> 5.3"
 gem "sass-rails", ">= 6"
 gem "turbo-rails", github: "hotwired/turbo-rails", branch: "main"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
